@@ -4,6 +4,12 @@
 **Namespace:** `marcus_grant.multimedia`  
 **License:** AGPL-3.0
 
+## NOTE
+
+I'm having issues getting vagrant to run so until
+I figure out how to test on a separated kernel,
+this is only a planning document.
+
 ## Prerequisites
 
 **Read [CONVENTIONS.md](./CONVENTIONS.md) before proceeding.** This document contains essential development standards, TDD workflow, and quality requirements that apply to all work in this collection.
@@ -11,6 +17,7 @@
 ## Development Specifications
 
 ### Repository Setup and Infrastructure
+
 - [ ] Create GitHub repository `ansible-multimedia`
 - [ ] Initialize collection structure with `ansible-galaxy collection init`
 - [ ] Set up `galaxy.yml` with proper metadata
@@ -27,6 +34,7 @@
 ### Core Specifications
 
 #### Core Functionality
+
 - [ ] **Hardware Detection**
   - [ ] Detect AMD GPUs (identify specific models)
   - [ ] Detect Intel GPUs (integrated and discrete)
@@ -54,6 +62,7 @@
   - [ ] Handle display manager compatibility
 
 #### Testing Requirements
+
 - [ ] **Unit Tests**
   - [ ] Test GPU detection accuracy
   - [ ] Validate driver installation logic
@@ -70,6 +79,7 @@
   - [ ] Performance benchmark validation
 
 #### Variables and Defaults
+
 - [ ] `gpu_drivers_auto_detect: true`
 - [ ] `install_vulkan: true`
 - [ ] `nvidia_driver_version: 'latest'`
@@ -80,6 +90,7 @@
 ### Core Specifications
 
 #### Core Functionality
+
 - [ ] **FFmpeg Installation**
   - [ ] Install FFmpeg with hardware acceleration
   - [ ] Configure compilation flags for optimal performance
@@ -105,6 +116,7 @@
   - [ ] Handle restricted codec repositories
 
 #### Testing Requirements
+
 - [ ] **Unit Tests**
   - [ ] Test codec availability detection
   - [ ] Validate installation procedures
@@ -121,6 +133,7 @@
   - [ ] Compatibility with media applications
 
 #### Variables and Defaults
+
 - [ ] `codecs_enable_proprietary: false`
 - [ ] `ffmpeg_enable_hardware_accel: true`
 - [ ] `install_gstreamer: true`
@@ -131,6 +144,7 @@
 ### Core Specifications
 
 #### Core Functionality
+
 - [ ] **VA-API Configuration**
   - [ ] Install VA-API runtime and drivers
   - [ ] Configure environment variables
@@ -156,6 +170,7 @@
   - [ ] Provide troubleshooting utilities
 
 #### Testing Requirements
+
 - [ ] **Unit Tests**
   - [ ] Test VA-API/VDPAU detection
   - [ ] Validate environment configuration
@@ -172,6 +187,7 @@
   - [ ] Performance regression testing
 
 #### Variables and Defaults
+
 - [ ] `hardware_accel_vaapi: true`
 - [ ] `hardware_accel_vdpau: true`
 - [ ] `accel_fallback_enabled: true`
@@ -180,6 +196,7 @@
 ## Planning-Only Roles
 
 ### Role: `audio_system` (Future)
+
 - [ ] **Planning Document**
   - [ ] ALSA configuration strategies
   - [ ] PulseAudio optimization techniques
@@ -188,6 +205,7 @@
   - [ ] Multi-device audio routing
 
 ### Role: `browser` (Future)
+
 - [ ] **Planning Document**
   - [ ] Firefox hardware acceleration settings
   - [ ] Chrome/Chromium optimization flags
@@ -198,18 +216,21 @@
 ## Quality Assurance Specifications
 
 ### Testing Infrastructure
+
 - [ ] Set up molecule for role testing
 - [ ] Configure GPU testing in CI/CD environments
 - [ ] Implement multimedia performance benchmarking
 - [ ] Create hardware compatibility test matrix
 
 ### Documentation Validation
+
 - [ ] README completeness and accuracy verification
 - [ ] Dependency documentation with clear integration examples
 - [ ] Installation guide effectiveness across distributions
 - [ ] Troubleshooting scenario coverage with real hardware
 
 ### Release Criteria
+
 - [ ] All unit tests passing across supported GPU types
 - [ ] Integration tests validating role dependency chain
 - [ ] Performance benchmarks meeting acceleration targets
@@ -219,12 +240,15 @@
 ## Role Dependencies and Integration
 
 ### Dependency Chain
+
 - `gpu_drivers` → Required by `hardware_acceleration`
 - `codecs` → Required by `hardware_acceleration`
 - `hardware_acceleration` → Required by future `browser` role
 
 ### External Dependencies
+
 - Mesa drivers (system packages)
 - FFmpeg libraries with hardware acceleration support
 - VA-API/VDPAU runtimes
 - Vulkan SDK components
+
